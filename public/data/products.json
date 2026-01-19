@@ -1,0 +1,207 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "iPhone 15 Pro Max",
+      "category": "smartphones",
+      "price": 1199,
+      "originalPrice": 1299,
+      "discount": 8,
+      "image": "https://images.unsplash.com/photo-1592286927505-1def25115558?w=500&h=500&fit=crop",
+      "stock": 15,
+      "rating": 4.8,
+      "reviews": 245,
+      "description": "Advanced features for advanced users. Beautiful titanium design.",
+      "features": ["6.7-inch Super Retina XDR display", "A17 Pro chip", "Advanced camera system", "Action button"],
+      "specifications": {
+        "Display": "6.7-inch Super Retina XDR",
+        "Processor": "A17 Pro",
+        "RAM": "8GB",
+        "Storage": "256GB",
+        "Battery": "4685 mAh"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Samsung Galaxy S24 Ultra",
+      "category": "smartphones",
+      "price": 1099,
+      "originalPrice": 1199,
+      "discount": 8,
+      "image": "https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=500&h=500&fit=crop",
+      "stock": 20,
+      "rating": 4.7,
+      "reviews": 189,
+      "description": "Ultra-advanced performance with stunning display.",
+      "features": ["6.8-inch Dynamic AMOLED display", "Snapdragon 8 Gen 3", "200MP camera", "S Pen included"],
+      "specifications": {
+        "Display": "6.8-inch Dynamic AMOLED",
+        "Processor": "Snapdragon 8 Gen 3",
+        "RAM": "12GB",
+        "Storage": "256GB",
+        "Battery": "5000 mAh"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Apple Watch Series 9",
+      "category": "smartwatches",
+      "price": 399,
+      "originalPrice": 429,
+      "discount": 7,
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop",
+      "stock": 30,
+      "rating": 4.6,
+      "reviews": 128,
+      "description": "Your fitness, health, and safety companion.",
+      "features": ["Retina display", "Always-On display", "ECG app", "Fall detection"],
+      "specifications": {
+        "Display": "1.9-inch Retina LTPO OLED",
+        "Processor": "S9 SiP",
+        "Sensors": "ECG, Blood Oxygen, Temperature",
+        "Water Resistance": "50m"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Sony WH-1000XM5",
+      "category": "earbuds",
+      "price": 349,
+      "originalPrice": 399,
+      "discount": 12,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+      "stock": 25,
+      "rating": 4.9,
+      "reviews": 312,
+      "description": "Industry-leading noise cancellation.",
+      "features": ["Active noise cancellation", "30-hour battery", "Multipoint connection", "Hi-Res audio"],
+      "specifications": {
+        "Drivers": "40mm",
+        "Frequency": "4Hz - 40kHz",
+        "Battery Life": "30 hours",
+        "Weight": "250g"
+      }
+    },
+    {
+      "id": 5,
+      "name": "Anker PowerCore 20000",
+      "category": "powerbanks",
+      "price": 45,
+      "originalPrice": 59,
+      "discount": 24,
+      "image": "https://images.unsplash.com/photo-1609042227505-5876f6aa4e90?w=500&h=500&fit=crop",
+      "stock": 50,
+      "rating": 4.7,
+      "reviews": 890,
+      "description": "Ultra-high capacity portable charger.",
+      "features": ["20000mAh capacity", "Fast charging", "Compact design", "Multiple USB ports"],
+      "specifications": {
+        "Capacity": "20000mAh",
+        "Input": "Micro USB, USB-C",
+        "Output": "2x USB-A, USB-C",
+        "Weight": "350g"
+      }
+    },
+    {
+      "id": 6,
+      "name": "Belkin USB-C Cable",
+      "category": "chargers",
+      "price": 19,
+      "originalPrice": 29,
+      "discount": 34,
+      "image": "https://images.unsplash.com/photo-1591667431602-8906cbb15fc7?w=500&h=500&fit=crop",
+      "stock": 100,
+      "rating": 4.5,
+      "reviews": 234,
+      "description": "Durable and certified USB-C charging cable.",
+      "features": ["6ft length", "100W power delivery", "Braided design", "Certified"],
+      "specifications": {
+        "Length": "6 feet",
+        "Power": "100W",
+        "Material": "Braided Nylon",
+        "Warranty": "2 years"
+      }
+    },
+    {
+      "id": 7,
+      "name": "ESR Protective Case",
+      "category": "accessories",
+      "price": 25,
+      "originalPrice": 35,
+      "discount": 28,
+      "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&h=500&fit=crop",
+      "stock": 60,
+      "rating": 4.6,
+      "reviews": 456,
+      "description": "Military-grade protection for your device.",
+      "features": ["Shock absorption", "Drop protection", "Slim design", "Wireless charging compatible"],
+      "specifications": {
+        "Material": "TPU + Polycarbonate",
+        "Drop Protection": "Up to 12ft",
+        "Weight": "45g"
+      }
+    },
+    {
+      "id": 8,
+      "name": "Google Pixel 8 Pro",
+      "category": "smartphones",
+      "price": 899,
+      "originalPrice": 999,
+      "discount": 10,
+      "image": "https://images.unsplash.com/photo-1598291209438-55d64ac0c2a5?w=500&h=500&fit=crop",
+      "stock": 18,
+      "rating": 4.8,
+      "reviews": 267,
+      "description": "Powered by Google's AI technology.",
+      "features": ["Magic Eraser", "Zoom Enhance", "Real Tone", "Tensor G3 processor"],
+      "specifications": {
+        "Display": "6.7-inch QHD+",
+        "Processor": "Tensor G3",
+        "RAM": "12GB",
+        "Storage": "128GB",
+        "Camera": "50MP main"
+      }
+    },
+    {
+      "id": 9,
+      "name": "iPad Air 2024",
+      "category": "accessories",
+      "price": 599,
+      "originalPrice": 649,
+      "discount": 7,
+      "image": "https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=500&h=500&fit=crop",
+      "stock": 22,
+      "rating": 4.7,
+      "reviews": 178,
+      "description": "Impossibly thin and powerful.",
+      "features": ["M2 chip", "Retina display", "Apple Pencil support", "All-day battery"],
+      "specifications": {
+        "Display": "11-inch Liquid Retina",
+        "Processor": "M2",
+        "RAM": "8GB",
+        "Storage": "256GB",
+        "Battery": "10 hours"
+      }
+    },
+    {
+      "id": 10,
+      "name": "Samsung Galaxy Buds2 Pro",
+      "category": "earbuds",
+      "price": 179,
+      "originalPrice": 229,
+      "discount": 21,
+      "image": "https://images.unsplash.com/photo-1599304917834-6c6c72daa07c?w=500&h=500&fit=crop",
+      "stock": 35,
+      "rating": 4.6,
+      "reviews": 445,
+      "description": "Immersive audio with intelligent ANC.",
+      "features": ["Active noise cancellation", "Ambient awareness", "360 audio", "IPX7 water resistance"],
+      "specifications": {
+        "Drivers": "11mm",
+        "Battery": "8 hours (33 with case)",
+        "Codecs": "SSC, AAC, SBC",
+        "Weight": "5.4g"
+      }
+    }
+  ]
+}

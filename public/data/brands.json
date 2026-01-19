@@ -1,0 +1,40 @@
+{
+  "brands": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/1024px-Apple_logo_black.svg.png",
+      "slug": "apple"
+    },
+    {
+      "id": 2,
+      "name": "Samsung",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Samsung_Logo.svg/2560px-Samsung_Logo.svg.png",
+      "slug": "samsung"
+    },
+    {
+      "id": 3,
+      "name": "Sony",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/2560px-Sony_logo.svg.png",
+      "slug": "sony"
+    },
+    {
+      "id": 4,
+      "name": "Google",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/2560px-Google_2015_logo.svg.png",
+      "slug": "google"
+    },
+    {
+      "id": 5,
+      "name": "Anker",
+      "logo": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e1/Anker_logo.svg/440px-Anker_logo.svg.png",
+      "slug": "anker"
+    },
+    {
+      "id": 6,
+      "name": "Belkin",
+      "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Belkin_logo.svg/440px-Belkin_logo.svg.png",
+      "slug": "belkin"
+    }
+  ]
+}

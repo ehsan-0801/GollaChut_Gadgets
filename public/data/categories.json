@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Smartphones",
+      "slug": "smartphones",
+      "icon": "📱",
+      "image": "https://images.unsplash.com/photo-1511707267537-b85faf00021e?w=300&h=300&fit=crop",
+      "count": 24
+    },
+    {
+      "id": 2,
+      "name": "Smart Watches",
+      "slug": "smartwatches",
+      "icon": "⌚",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop",
+      "count": 18
+    },
+    {
+      "id": 3,
+      "name": "Earbuds & Headphones",
+      "slug": "earbuds",
+      "icon": "🎧",
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop",
+      "count": 32
+    },
+    {
+      "id": 4,
+      "name": "Power Banks",
+      "slug": "powerbanks",
+      "icon": "🔋",
+      "image": "https://images.unsplash.com/photo-1609042227505-5876f6aa4e90?w=300&h=300&fit=crop",
+      "count": 15
+    },
+    {
+      "id": 5,
+      "name": "Chargers & Cables",
+      "slug": "chargers",
+      "icon": "🔌",
+      "image": "https://images.unsplash.com/photo-1591667431602-8906cbb15fc7?w=300&h=300&fit=crop",
+      "count": 42
+    },
+    {
+      "id": 6,
+      "name": "Accessories",
+      "slug": "accessories",
+      "icon": "🎁",
+      "image": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=300&h=300&fit=crop",
+      "count": 58
+    }
+  ]
+}
