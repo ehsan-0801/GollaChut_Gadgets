@@ -1,0 +1,171 @@
+'use client'
+
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+export default function HeroSection() {
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  const mainSlides = [
+    {
+      id: 1,
+      title: 'iPad Pro',
+      subtitle: 'Mmmmm. Power.',
+      image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=1200&h=600&fit=crop',
+      link: '/shop?category=tablets',
+      badge: 'M5'
+    },
+    {
+      id: 2,
+      title: 'iPhone 15 Pro',
+      subtitle: 'Titanium. So strong. So light.',
+      image: 'https://images.unsplash.com/photo-1592286927505-b0501739c61b?w=1200&h=600&fit=crop',
+      link: '/shop?brand=apple'
+    },
+    {
+      id: 3,
+      title: 'Galaxy S24 Ultra',
+      subtitle: 'Epic in every way',
+      image: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=1200&h=600&fit=crop',
+      link: '/shop?brand=samsung'
+    },
+    {
+      id: 4,
+      title: 'AirPods Pro',
+      subtitle: 'Adaptive Audio. Now playing.',
+      image: 'https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=1200&h=600&fit=crop',
+      link: '/shop?category=earbuds'
+    }
+  ]
+
+  const promoCards = [
+    {
+      id: 1,
+      title: 'Galaxy Watch7',
+      subtitle: 'Galaxy AI ✨ is here',
+      image: 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=300&fit=crop',
+      link: '/shop?category=smartwatches',
+      bgColor: 'bg-gray-900'
+    },
+    {
+      id: 2,
+      title: 'Induction Cooker',
+      subtitle: 'Instant Heat, Instant Taste',
+      image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=300&fit=crop',
+      link: '/shop?category=appliances',
+      bgColor: 'bg-blue-200'
+    }
+  ]
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % mainSlides.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [mainSlides.length])
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % mainSlides.length)
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + mainSlides.length) % mainSlides.length)
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      {/* Main Carousel - Takes 2 columns on desktop */}
+      <div className="lg:col-span-2 relative h-[400px] md:h-[450px] overflow-hidden rounded-lg bg-gradient-to-br from-gray-900 to-black">
+        {mainSlides.map((slide, index) => (
+          <Link
+            key={slide.id}
+            href={slide.link}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+            
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+            
+            {/* Content */}
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center px-6 text-white">
+              <div className="flex items-center gap-2 mb-4">
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold">
+                  {slide.title}
+                </h2>
+                {slide.badge && (
+                  <span className="text-2xl md:text-3xl bg-accent text-accent-foreground px-3 py-1 rounded-md font-bold">
+                    {slide.badge}
+                  </span>
+                )}
+              </div>
+              <p className="text-xl md:text-3xl font-medium mb-2">
+                {slide.subtitle}
+              </p>
+            </div>
+          </Link>
+        ))}
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-colors backdrop-blur-sm"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-full transition-colors backdrop-blur-sm"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+        </button>
+
+        {/* Indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+          {mainSlides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              className={`rounded-full transition-all ${
+                index === currentSlide
+                  ? 'bg-accent w-10 h-2'
+                  : 'bg-white/40 hover:bg-white/60 w-2 h-2'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Promotional Cards - Takes 1 column on desktop, stacked vertically */}
+      <div className="lg:col-span-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4">
+        {promoCards.map((card) => (
+          <Link
+            key={card.id}
+            href={card.link}
+            className={`relative h-[200px] lg:h-[218px] overflow-hidden rounded-lg ${card.bgColor} group hover:shadow-xl transition-shadow`}
+          >
+            <div className="absolute inset-0 flex flex-col justify-center items-start p-6 text-white z-10">
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">{card.title}</h3>
+              <p className="text-sm md:text-base opacity-90">{card.subtitle}</p>
+            </div>
+            <Image
+              src={card.image}
+              alt={card.title}
+              fill
+              className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}

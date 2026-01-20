@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CartDrawer from '@/components/CartDrawer'
-import HeroCarousel from '@/components/HeroCarousel'
+import HeroSection from '@/components/HeroSection'
 import CategoryGrid from '@/components/CategoryGrid'
 import ProductCard from '@/components/ProductCard'
 import BrandShowcase from '@/components/BrandShowcase'
@@ -28,7 +28,7 @@ export default function Home() {
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="max-w-7xl mx-auto px-4 py-8">
-          <HeroCarousel />
+          <HeroSection />
         </section>
 
         {/* Featured Offers Banner */}

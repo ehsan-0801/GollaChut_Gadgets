@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronRight } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 
 const navigationData = [
   {
@@ -108,52 +108,44 @@ const navigationData = [
 
 export default function Navigation() {
   const [activeMenu, setActiveMenu] = useState(null)
-  const [activeSubmenu, setActiveSubmenu] = useState(null)
-
-  const handleMouseEnter = (id) => {
-    setActiveMenu(id)
-    setActiveSubmenu(null)
-  }
-
-  const handleMouseLeave = () => {
-    setActiveMenu(null)
-    setActiveSubmenu(null)
-  }
 
   return (
-    <nav className="hidden lg:block bg-background border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 overflow-x-auto overflow-y-visible no-scrollbar">
-        <ul className="flex items-center w-max min-w-full">
+    <nav className="hidden lg:block bg-background border-b border-border relative z-50">
+      <div className="max-w-7xl mx-auto px-1">
+        <ul className="flex items-center">
           {navigationData.map((item) => (
             <li
               key={item.id}
               className="relative group"
-              onMouseEnter={() => handleMouseEnter(item.id)}
-              onMouseLeave={handleMouseLeave}
             >
               {/* Main Menu Item */}
               <Link
                 href={item.href}
-                className="flex items-center gap-1 px-4 py-3 text-foreground hover:text-accent transition-colors duration-200 font-medium whitespace-nowrap"
+                className="flex items-center gap-1 px-2 py-3 text-foreground hover:text-accent transition-colors duration-200 font-medium whitespace-nowrap"
+                onMouseEnter={() => setActiveMenu(item.id)}
               >
                 {item.label}
                 {item.submenu && (
-                  <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeMenu === item.id ? 'rotate-180' : ''}`} />
                 )}
               </Link>
 
               {/* Dropdown Menu */}
               {item.submenu && (
-                <div className="absolute left-0 top-full pt-0 invisible group-hover:visible z-50 transition-all duration-200">
-                  <div className="bg-secondary border border-border rounded-md shadow-lg min-w-max">
+                <div 
+                  className="absolute left-0 top-full opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]"
+                  onMouseEnter={() => setActiveMenu(item.id)}
+                  onMouseLeave={() => setActiveMenu(null)}
+                >
+                  <div className="bg-card border border-border rounded-md shadow-xl min-w-[220px] mt-0">
                     <ul className="py-2">
                       {item.submenu.map((subitem, index) => (
                         <li key={index}>
                           <Link
                             href={subitem.href}
-                            className="flex items-center justify-between px-4 py-2 text-foreground hover:text-accent hover:bg-card/50 transition-colors duration-150 text-sm"
+                            className="block px-4 py-2.5 text-foreground hover:text-accent hover:bg-secondary transition-colors duration-150 text-sm whitespace-nowrap"
                           >
-                            <span>{subitem.label}</span>
+                            {subitem.label}
                           </Link>
                         </li>
                       ))}
