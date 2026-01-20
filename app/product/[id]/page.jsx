@@ -4,10 +4,11 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ProductCard from '@/components/ProductCard'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, use } from 'react'
 import { Heart, Share2, ShoppingCart, Check, Star, Minus, Plus } from 'lucide-react'
 
 export default function ProductDetailPage({ params }) {
+  const resolvedParams = use(params)
   const [product, setProduct] = useState(null)
   const [allProducts, setAllProducts] = useState([])
   const [quantity, setQuantity] = useState(1)
@@ -19,10 +20,10 @@ export default function ProductDetailPage({ params }) {
       .then(res => res.json())
       .then(data => {
         setAllProducts(data.products)
-        const found = data.products.find(p => p.id === parseInt(params.id))
+        const found = data.products.find(p => p.id === parseInt(resolvedParams.id))
         setProduct(found)
       })
-  }, [params.id])
+  }, [resolvedParams.id])
 
   if (!product) {
     return (

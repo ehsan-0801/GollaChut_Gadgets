@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import CartDrawer from '@/components/CartDrawer'
 import HeroSection from '@/components/HeroSection'
-import CategoryGrid from '@/components/CategoryGrid'
+import CategorySlider from '@/components/CategorySlider'
 import ProductCard from '@/components/ProductCard'
 import BrandShowcase from '@/components/BrandShowcase'
 import { Clock, Zap, TrendingUp } from 'lucide-react'
@@ -64,7 +64,12 @@ export default function Home() {
 
         {/* Categories */}
         <section className="max-w-7xl mx-auto px-4 py-8">
-          <CategoryGrid categories={categories.slice(0, 5)} />
+          <CategorySlider categories={categories} />
+        </section>
+
+        {/* Brands */}
+        <section className="max-w-7xl mx-auto px-4 py-8 border-t border-border">
+          <BrandShowcase brands={brands} />
         </section>
 
         {/* Featured Products */}
@@ -108,11 +113,6 @@ export default function Home() {
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
-        </section>
-
-        {/* Brands */}
-        <section className="max-w-7xl mx-auto px-4 py-12">
-          <BrandShowcase brands={brands} />
         </section>
 
         {/* Promotional Banner */}
