@@ -126,14 +126,25 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* Add to Cart Button */}
-        <Button
-          onClick={addToCart}
-          variant="default"
-          className="w-full"
-        >
-          <ShoppingCart className="h-4 w-4" />
-          Add to Cart
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            onClick={addToCart}
+            variant="outline"
+            className="flex-1"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            Add to Cart
+          </Button>
+          <Button
+            asChild
+            variant="default"
+            className="flex-1"
+          >
+            <Link href={`/checkout?product=${product.id}`}>
+              Buy Now
+            </Link>
+          </Button>
+        </div>
       </div>
     </div>
   )
