@@ -6,32 +6,14 @@ import { ShoppingCart, Heart, Eye, Star } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
+import { useCart } from '@/context/CartContext'
+
 export default function ProductCard({ product }) {
   const [isWishlisted, setIsWishlisted] = useState(false)
+  const { addToCart: addToCartContext } = useCart()
 
   const addToCart = () => {
-    const cartItem = {
-      id: product.id,
-      name: product.name,
-      brand: product.brand,
-      price: product.price,
-      image: product.image,
-      quantity: 1,
-    }
-
-    const savedCart = localStorage.getItem('cart')
-    const cart = savedCart ? JSON.parse(savedCart) : []
-
-    const existingItem = cart.find(item => item.id === product.id)
-    if (existingItem) {
-      existingItem.quantity += 1
-    } else {
-      cart.push(cartItem)
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart))
-    window.dispatchEvent(new Event('cart-updated'))
-    window.dispatchEvent(new CustomEvent('cart-event', { detail: { openCart: true } }))
+    addToCartContext(product)
   }
 
   return (

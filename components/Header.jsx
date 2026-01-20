@@ -4,41 +4,24 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import { ShoppingCart, Heart, Search, Menu, X } from 'lucide-react'
+import { ShoppingCart, Heart, Search, Menu, X, User } from 'lucide-react'
 import Navigation from './Navigation'
 import ThemeSwitcher from './ThemeSwitcher'
 
+import { useCart } from '@/context/CartContext'
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [cartCount, setCartCount] = useState(0)
   const [mounted, setMounted] = useState(false)
   const { theme } = useTheme()
+  const { cartCount, toggleDrawer } = useCart()
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    const savedCart = localStorage.getItem('cart')
-    if (savedCart) {
-      const cart = JSON.parse(savedCart)
-      setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0))
-    }
-
-    const handleCartUpdate = () => {
-      const updated = localStorage.getItem('cart')
-      if (updated) {
-        const cart = JSON.parse(updated)
-        setCartCount(cart.reduce((sum, item) => sum + item.quantity, 0))
-      }
-    }
-
-    window.addEventListener('cart-updated', handleCartUpdate)
-    return () => window.removeEventListener('cart-updated', handleCartUpdate)
-  }, [])
-
   const openCart = () => {
-    window.dispatchEvent(new CustomEvent('cart-event', { detail: { openCart: true } }))
+    toggleDrawer()
   }
 
   return (
@@ -97,6 +80,11 @@ export default function Header() {
           {/* Right Icons */}
           <div className="flex items-center gap-4 md:gap-6">
             <ThemeSwitcher />
+            
+            <Link href="/login" className="hidden md:flex items-center gap-2 text-foreground hover:text-accent transition">
+              <User className="w-5 h-5" />
+              <span className="text-sm font-medium">Login</span>
+            </Link>
             
             <button className="hidden md:flex items-center gap-2 text-foreground hover:text-accent transition">
               <Heart className="w-5 h-5" />
@@ -174,6 +162,12 @@ export default function Header() {
               Used Devices
             </Link>
             <hr className="border-border my-2" />
+            <Link href="/login" className="block text-foreground hover:text-accent font-medium transition py-2">
+              Login
+            </Link>
+            <Link href="/register" className="block text-foreground hover:text-accent font-medium transition py-2">
+              Register
+            </Link>
             <Link href="/wishlist" className="block text-foreground hover:text-accent font-medium transition py-2">
               Wishlist
             </Link>

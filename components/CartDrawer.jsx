@@ -6,46 +6,11 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { X, Minus, Plus, Trash2, ShoppingCart } from 'lucide-react';
 
+import { useCart } from '@/context/CartContext';
+
 export default function CartDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const { cart, removeFromCart, updateQuantity, isDrawerOpen: isOpen, setIsDrawerOpen: setIsOpen, cartSubtotal: subtotal } = useCart();
 
-  useEffect(() => {
-    const savedCart = localStorage.getItem('cart');
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
-    }
-  }, []);
-
-  useEffect(() => {
-    const handleOpenCart = (e) => {
-      if (e.detail?.openCart) {
-        setIsOpen(true);
-      }
-    };
-    window.addEventListener('cart-event', handleOpenCart);
-    return () => window.removeEventListener('cart-event', handleOpenCart);
-  }, []);
-
-  const removeItem = (id) => {
-    const updated = cartItems.filter(item => item.id !== id);
-    setCartItems(updated);
-    localStorage.setItem('cart', JSON.stringify(updated));
-  };
-
-  const updateQuantity = (id, quantity) => {
-    if (quantity <= 0) {
-      removeItem(id);
-      return;
-    }
-    const updated = cartItems.map(item =>
-      item.id === id ? { ...item, quantity } : item
-    );
-    setCartItems(updated);
-    localStorage.setItem('cart', JSON.stringify(updated));
-  };
-
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   const tax = subtotal * 0.15;
   const total = subtotal + tax;
 
@@ -79,7 +44,7 @@ export default function CartDrawer() {
 
         {/* Items */}
         <div className="flex-1 overflow-y-auto p-6">
-          {cartItems.length === 0 ? (
+          {cart.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-full text-center">
               <ShoppingCart className="h-16 w-16 text-muted-foreground mb-4" />
               <p className="text-muted-foreground mb-4">Your cart is empty</p>
@@ -91,7 +56,7 @@ export default function CartDrawer() {
             </div>
           ) : (
             <div className="space-y-4">
-              {cartItems.map((item) => (
+              {cart.map((item) => (
                 <div
                   key={item.id}
                   className="flex gap-4 bg-secondary/50 rounded-lg p-4"
@@ -133,7 +98,7 @@ export default function CartDrawer() {
                       <Button
                         variant="ghost"
                         size="icon-sm"
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => removeFromCart(item.id)}
                         className="ml-auto text-destructive hover:text-destructive hover:bg-destructive/10"
                       >
                         <Trash2 className="h-4 w-4" />
@@ -147,7 +112,7 @@ export default function CartDrawer() {
         </div>
 
         {/* Footer */}
-        {cartItems.length > 0 && (
+        {cart.length > 0 && (
           <div className="border-t border-border p-6 space-y-4">
             <div className="space-y-2 text-sm">
               <div className="flex justify-between text-muted-foreground">
