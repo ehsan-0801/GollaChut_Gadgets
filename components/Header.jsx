@@ -51,8 +51,7 @@ export default function Header() {
             <span className="hidden md:inline">📍 Dhaka, Bangladesh</span>
           </div>
           <div className="flex gap-4">
-            <Link href="/login" className="hover:text-accent transition">Login</Link>
-            <Link href="/register" className="hover:text-accent transition">Register</Link>
+            <span className="text-muted-foreground">Welcome to GollachutGadgets</span>
           </div>
         </div>
       </div>
@@ -72,14 +71,14 @@ export default function Header() {
                 priority
               />
             ) : (
-              <Image
+            <Image
                 src="/logo/logoblack.png"
-                alt="GollachutGadgets Logo"
+              alt="GollachutGadgets Logo"
                 width={100}
                 height={100}
                 className="h-8 md:h-10 w-auto max-w-32 md:max-w-44 object-contain"
-                priority
-              />
+              priority
+            />
             )}
           </Link>
 
